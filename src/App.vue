@@ -299,8 +299,8 @@ width: 70%;
 margin: auto;
 .demo-zone{
   .name{
-    margin-top: 50rpx;
-    margin-bottom: 25rpx;
+    margin-top: 50px;
+    margin-bottom: 25px;
   }
   .icons{
      display: flex;
@@ -314,9 +314,9 @@ margin: auto;
       /* ul盒子里面的内容水平居中 */
       margin:0 auto;
     .ico{
-      padding: 6rpx 24rpx;
-      margin-right: 32rpx;
-      margin-bottom: 20rpx;
+      padding: 6rpx 24px;
+      margin-right: 32px;
+      margin-bottom: 20px;
       width: 130px;
       border-radius: 10%;
       background-color: white;
@@ -324,6 +324,9 @@ margin: auto;
       align-items: center;
       flex-direction: column;
     }
+  }
+  .icon-name{
+    color: black;
   }
 }
 
