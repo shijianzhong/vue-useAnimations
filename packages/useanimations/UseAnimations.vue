@@ -4,11 +4,13 @@
     </div>
 </template>
 <script setup>
-import lottie from 'lottie-web';
+// import lottie from 'lottie-web';
+import lottie from './utils/js/modules/full'
 import animationData from "./jsons/jsons"
 import { getEffect } from "./utils/getEffect"
 import { onMounted, onUnmounted, reactive, ref } from "vue";
 
+console.log(lottie)
 const getRandomId = (key) =>
     `${key}_i${Math.floor(Math.random() * 10000 + 1)}`;
 const props = defineProps({
