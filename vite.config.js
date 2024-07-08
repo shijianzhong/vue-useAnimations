@@ -1,5 +1,4 @@
-import { fileURLToPath, URL } from 'node:url'
-
+const path = require('path');
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
@@ -8,48 +7,31 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
+  define: {
+    'process.env': {},  // 为空对象，避免 ReferenceError 错误
+  },
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': path.resolve(__dirname, 'src'),
     }
   },
   build: {
-    target: 'modules',
-    //打包文件目录
-    outDir: "es",
     //压缩
-    minify: false,
-    //css分离
-    //cssCodeSplit: true,
+    minify: true,
     rollupOptions: {
       //忽略打包vue文件
       external: ['vue'],
-      input: ['src/index.js'],
-      output: [
-        {
-          format: 'es',
-          //不用打包成.es.js,这里我们想把它打包成.js
-          entryFileNames: '[name].js',
-          //让打包目录和我们目录对应
-          preserveModules: true,
-          //配置打包根目录
-          dir: 'es',
-          preserveModulesRoot: 'src'
-        },
-        {
-          format: 'cjs',
-          entryFileNames: '[name].js',
-          //让打包目录和我们目录对应
-          preserveModules: true,
-          //配置打包根目录
-          dir: 'lib',
-          preserveModulesRoot: 'src'
+      output: {
+        globals: {
+          vue: 'Vue'
         }
-      ]
+      }
     },
     lib: {
-      entry: 'src/index.js',
-      formats: ['es', 'cjs']
+      entry: path.resolve(__dirname, 'src/index.js'),
+      name: 'UseAnimations',
+      fileName: (format) => `use-animations.${format}.js`,
+      // formats: ['es', 'umd']
     }
   },
 })

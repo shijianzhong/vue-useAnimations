@@ -1,2 +1,2 @@
-import vueUseanimations from '../packages/useanimations'
+import vueUseanimations from './components/useanimations/UseAnimations.vue'
 export default vueUseanimations
